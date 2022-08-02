@@ -46,7 +46,7 @@ df_train_processed = preprocess_train(df_train)
 df_symptoms_processed = preprocess_symptom(df_symptoms)
 df_desc_processed = preprocess_description(df_desc)
 df_prec_processed = preprocess_precaution(df_prec)
-loaded_model = pickle.load(open("../model/rf_model.sav", 'rb'))
+loaded_model = pickle.load(open("rf_model.sav", 'rb'))
     
 @app.route("/")
 def index():
