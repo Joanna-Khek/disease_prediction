@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %} 
+
+{% block main %} 
+
+<div class="container">
+    <div class="card">
+        <div class="card-header text-white" style="background-color: #8aa2d4;">
+          Step 1: Select your symptoms
+        </div>
+        <form method="post" action="symptoms">
+            <div class="container-form">
+                <strong> Severity 1: </strong>
+                <select class="selectpicker" multiple data-live-search="true" name="s1">
+                {% for symp in s1 %}
+                    <option>{{symp}}</option>
+                {% endfor %}
+                </select>
+                <br>
+                <br>
+                <strong> Severity 2: </strong>
+                <select class="selectpicker" multiple data-live-search="true" name="s2">
+                    {% for symp in s2 %}
+                        <option>{{symp}}</option>
+                    {% endfor %}
+                </select>
+                <br>
+                <br>
+                <strong> Severity 3: </strong>
+                <select class="selectpicker" multiple data-live-search="true" name="s3">
+                    {% for symp in s3 %}
+                        <option>{{symp}}</option>
+                    {% endfor %}
+                </select>
+                <br>
+                <br>
+                <strong> Severity 4: </strong>
+                <select class="selectpicker" multiple data-live-search="true" name="s4">
+                    {% for symp in s4 %}
+                        <option>{{symp}}</option>
+                    {% endfor %}
+                </select>
+                <br>
+                <br>
+                <strong> Severity 5: </strong>
+                <select class="selectpicker" multiple data-live-search="true" name="s5">
+                    {% for symp in s5 %}
+                        <option>{{symp}}</option>
+                    {% endfor %}
+                </select>
+                <br>
+                <br>
+                <strong> Severity 6: </strong>
+                <select class="selectpicker" multiple data-live-search="true" name="s6">
+                    {% for symp in s6 %}
+                        <option>{{symp}}</option>
+                    {% endfor %}
+                </select>
+                <br>
+                <br>
+                <strong> Severity 7: </strong>
+                <select class="selectpicker" multiple data-live-search="true" name="s7">
+                    {% for symp in s7 %}
+                        <option>{{symp}}</option>
+                    {% endfor %}
+                </select>
+                <br>
+                <br>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary" value="Submit"/>
+                </div>
+            </div> 
+        </form>
+    </div>
+</div>
+
+
+{% endblock %} 

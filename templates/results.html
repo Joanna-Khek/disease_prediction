@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %} 
+
+{% block main %} 
+
+<div class="container">
+    <div class="card">
+        <div class="card-header text-white" style="background-color: #8aa2d4;">
+          Step 3: Understanding your prediction
+        </div>
+        <div class="container-form">
+            <br>
+            <strong>You have selected the following symptoms:</strong>
+            {% for symp in all_symptoms %}
+            <table>
+                <tr>
+                    <td>{{ symp }}</td>
+                </tr>
+            </table>
+            {% endfor %}
+
+            <br>
+            <strong>The predicted disease with highest probability is: </strong>
+            {% if get_flashed_messages() %}
+            <div class="alert alert-success border text-center d-inline-block" role="alert">
+                {{ get_flashed_messages() | join(" ") }}
+            </div>
+            {% endif %}
+
+            <br>
+            <strong>The top 3 possible diseases are:</strong>
+            <br>
+            <br>
+            <table class="table table-hover" style="width:100%">
+                <thead>
+                    <tr>
+                        <th scope="col">Disease</th>
+                        <th scope="col">Probability</th>
+                        <th scope="col">Symptom Description</th>
+                        <th scope="col">Precautions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for disease, probability, desc, prec in zip(results_desc['Disease'], results_desc['Probability'], results_desc["Symptom_Description"], results_desc["Precautions"]) %} 
+                        <tr>
+                            <td>{{ disease }}</td>
+                            <td>{{ probability }}</td>
+                            <td>{{ desc }}</td>
+                            <td>{{ prec }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+
+            <a class="btn btn-primary" href="/" role="button">Back to home</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %} 
