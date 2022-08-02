@@ -37,6 +37,16 @@ def preprocess_precaution(df):
     df["Precautions"] = df["Symptom_precaution_0"] + ". " +  df["Symptom_precaution_1"] + ". " + df["Symptom_precaution_2"] + ". " + df["Symptom_precaution_3"]
     return df
 
+data_path = os.path.join("disease-symptom-prediction")
+df_symptoms = read_dataframe(data_path, "symptom_severity.csv")
+df_train = read_dataframe(data_path, "Training.csv")
+df_desc = read_dataframe(data_path, "disease_description.csv")
+df_prec = read_dataframe(data_path, "disease_precaution.csv")
+df_train_processed = preprocess_train(df_train)
+df_symptoms_processed = preprocess_symptom(df_symptoms)
+df_desc_processed = preprocess_description(df_desc)
+df_prec_processed = preprocess_precaution(df_prec)
+loaded_model = pickle.load(open("../model/rf_model.sav", 'rb'))
     
 @app.route("/")
 def index():
@@ -115,14 +125,4 @@ def results():
                            results_desc=RESULTS_DESC, zip=zip)
 
 if __name__ == "__main__":
-    data_path = os.path.join("disease-symptom-prediction")
-    df_symptoms = read_dataframe(data_path, "symptom_severity.csv")
-    df_train = read_dataframe(data_path, "Training.csv")
-    df_desc = read_dataframe(data_path, "disease_description.csv")
-    df_prec = read_dataframe(data_path, "disease_precaution.csv")
-    df_train_processed = preprocess_train(df_train)
-    df_symptoms_processed = preprocess_symptom(df_symptoms)
-    df_desc_processed = preprocess_description(df_desc)
-    df_prec_processed = preprocess_precaution(df_prec)
-    loaded_model = pickle.load(open("../model/rf_model.sav", 'rb'))
     app.run(debug=False)
