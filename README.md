@@ -1,5 +1,5 @@
 # Disease Prediction Web Application
-Link to application: https://symptoms-prediction.herokuapp.com/
+Link to application: https://symptom-prediction.fly.dev/
 
 
 ![diagnoseIt_logo](https://user-images.githubusercontent.com/53141849/182336864-60a42b8b-a830-492f-a302-8992532471ac.png)   
